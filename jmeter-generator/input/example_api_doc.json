@@ -1,0 +1,65 @@
+{
+  "test_name": "用户管理接口测试",
+  "api_interfaces": [
+    {
+      "name": "用户注册",
+      "method": "POST",
+      "protocol": "HTTPS",
+      "host": "api.example.com",
+      "path": "/register",
+      "headers": [
+        {"name": "Content-Type", "value": "application/json"}
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"username\":\"new_user\",\"email\":\"user@example.com\",\"password\":\"pass123\"}"
+      }
+    },
+    {
+      "name": "用户登录",
+      "method": "POST",
+      "protocol": "HTTPS",
+      "host": "api.example.com",
+      "path": "/login",
+      "headers": [
+        {"name": "Content-Type", "value": "application/json"}
+      ],
+      "body": {
+        "type": "json",
+        "content": "{\"username\":\"new_user\",\"password\":\"pass123\"}"
+      }
+    },
+    {
+      "name": "获取用户列表",
+      "method": "GET",
+      "protocol": "HTTPS",
+      "host": "api.example.com",
+      "path": "/users",
+      "query_params": [
+        {"name": "page", "value": "1"},
+        {"name": "size", "value": "20"}
+      ],
+      "headers": [
+        {"name": "Authorization", "value": "Bearer ${token}"}
+      ]
+    },
+    {
+      "name": "删除用户",
+      "method": "DELETE",
+      "protocol": "HTTPS",
+      "host": "api.example.com",
+      "path": "/users/123",
+      "headers": [
+        {"name": "Authorization", "value": "Bearer ${token}"}
+      ]
+    }
+  ],
+  "scenario": {
+    "threads": 50,
+    "ramp_up": 15,
+    "duration": 180,
+    "assertions": [
+      {"type": "status_code", "condition": "equals", "expected": "200"}
+    ]
+  }
+}

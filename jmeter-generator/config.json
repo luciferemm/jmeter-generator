@@ -1,0 +1,15 @@
+{
+  "jmeter_version": "5.x",
+  "default_protocol": "HTTP",
+  "default_timeout_ms": 60000,
+  "listeners": ["SummaryReport", "ViewResultsTree"],
+  "input_dir": "input/",
+  "output_dir": "output/",
+  "supported_formats": [".md", ".json", ".yaml", ".yml", ".har"],
+  "default_threads": 10,
+  "default_ramp_up": 10,
+  "default_duration": 60,
+  "default_assertions": [
+    {"type": "status_code", "condition": "equals", "expected": "200"}
+  ]
+}
